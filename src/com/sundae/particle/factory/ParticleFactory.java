@@ -5,12 +5,16 @@ import java.util.Random;
 public class ParticleFactory {
 
     private static Random random = new Random();
-    private static int PARTICLE_RUNNING_SPEED = 2;
+    private static int PARTICLE_RUNNING_SPEED = 1;
 
-    public static ParticlePoint getRandomParticle(int parentWidth, int parentHeight, int radius, int color){
+    public static ParticlePoint getRandomParticle(int parentWidth, int parentHeight, int radius, int color, boolean randomRadius){
         int x = random.nextInt(parentWidth);
         int y = random.nextInt(parentHeight);
         int angle = random.nextInt(360);
+
+        if(randomRadius){
+            radius = random.nextInt(radius - 1) + 2;
+        }
 
         if(x - radius < 0) {
             x = radius;

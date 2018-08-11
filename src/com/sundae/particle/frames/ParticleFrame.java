@@ -15,7 +15,7 @@ public class ParticleFrame extends JFrame {
 
     public ParticleFrame(){
         this.setVisible(true);
-        this.setSize(700,700);
+        this.setSize(1000,700);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         particlePanel = new ParticlePanel();
