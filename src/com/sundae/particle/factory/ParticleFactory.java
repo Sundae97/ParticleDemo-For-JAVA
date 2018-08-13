@@ -5,12 +5,13 @@ import java.util.Random;
 public class ParticleFactory {
 
     private static Random random = new Random();
-    private static int PARTICLE_RUNNING_SPEED = 1;
+    private static float PARTICLE_RUNNING_MAX_SPEED = 3;
 
     public static ParticlePoint getRandomParticle(int parentWidth, int parentHeight, int radius, int color, boolean randomRadius){
         int x = random.nextInt(parentWidth);
         int y = random.nextInt(parentHeight);
         int angle = random.nextInt(360);
+        float speed = random.nextFloat() + 0.1f * PARTICLE_RUNNING_MAX_SPEED;
 
         if(randomRadius){
             radius = random.nextInt(radius - 1) + 2;
@@ -28,12 +29,12 @@ public class ParticleFactory {
             y =parentHeight - radius;
         }
 
-        return new ParticlePoint(x, y, radius, color, angle);
+        return new ParticlePoint(x, y, radius, color, angle, speed);
     }
 
     public static void doParticleRun(int parentWidth, int parentHeight, ParticlePoint particlePoint){
-        double nextX = Math.cos(toRadian(particlePoint.runningAngle)) * PARTICLE_RUNNING_SPEED;
-        double nextY = Math.sin(toRadian(particlePoint.runningAngle)) * PARTICLE_RUNNING_SPEED;
+        double nextX = Math.cos(toRadian(particlePoint.runningAngle)) * particlePoint.runningSpeed;
+        double nextY = Math.sin(toRadian(particlePoint.runningAngle)) * particlePoint.runningSpeed;
         particlePoint.x += nextX;
         particlePoint.y -= nextY;
 
