@@ -5,13 +5,13 @@ import java.util.Random;
 public class ParticleFactory {
 
     private static Random random = new Random();
-    private static float PARTICLE_RUNNING_MAX_SPEED = 3;
+    private static float PARTICLE_RUNNING_MAX_SPEED = 1.f;
 
     public static ParticlePoint getRandomParticle(int parentWidth, int parentHeight, int radius, int color, boolean randomRadius){
         int x = random.nextInt(parentWidth);
         int y = random.nextInt(parentHeight);
         int angle = random.nextInt(360);
-        float speed = random.nextFloat() + 0.1f * PARTICLE_RUNNING_MAX_SPEED;
+        float speed = (random.nextFloat() + 0.1f) * PARTICLE_RUNNING_MAX_SPEED;
 
         if(randomRadius){
             radius = random.nextInt(radius - 1) + 2;
