@@ -16,7 +16,7 @@ public class ParticlePanel extends JPanel {
     private static int PARTICLE_COUNT = 150;
     private static int LINE_MAX_LENGTH = 100;
 
-    private static int ALPHA_OFFSET = 80;
+    private static int ALPHA_OFFSET = 0;
     private static float LINE_WIDTH = 0.2f;
 
     private static BasicStroke basicStroke = new BasicStroke(LINE_WIDTH);
@@ -57,7 +57,7 @@ public class ParticlePanel extends JPanel {
 
                 double distance = PointUtil.getDistance(p.x, p.y, particlePoint.x, particlePoint.y);
                 if(distance <= LINE_MAX_LENGTH){
-                    int alpha = (int) ((1 - (distance / LINE_MAX_LENGTH)) * 255);
+                    int alpha = (int) ((1 - (distance / LINE_MAX_LENGTH)) * 500);
                     alpha += ALPHA_OFFSET;
                     alpha = alpha >= 255 ? 255 : alpha;
                     g.setColor(new Color(255,255,255, alpha));
